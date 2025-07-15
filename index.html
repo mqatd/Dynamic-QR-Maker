@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>UPI QR Generator (with spaced label)</title>
+  <title>UPI QR Generator (with Note Display)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
   <style>
@@ -109,13 +109,9 @@
           return;
         }
 
-        // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Draw QR code
         ctx.drawImage(tempCanvas, 0, 0);
 
-        // Draw text below QR
         ctx.font = 'bold 14px Segoe UI';
         ctx.fillStyle = '#000';
         ctx.textAlign = 'center';
@@ -123,8 +119,8 @@
         const baseY = 320;
         ctx.fillText(`Name: ${name}`, 150, baseY);
         ctx.fillText(`Amount: ₹${amount}`, 150, baseY + 20);
-        ctx.fillText(`UPI: ${upiId}`, 150, baseY + 40);
-        ctx.fillText(``, 150, baseY + 60);  // Blank line
+        ctx.fillText(`UPI ID: ${upiId}`, 150, baseY + 40);
+        ctx.fillText(`Note: ${note}`, 150, baseY + 60);  // 🟢 Note directly after UPI
 
         canvas.style.display = 'block';
         document.getElementById('downloadBtn').style.display = 'inline-block';
