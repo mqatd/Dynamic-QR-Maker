@@ -112,15 +112,20 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(tempCanvas, 0, 0);
 
+        // Add white background for text area
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 310, canvas.width, 80);
+
+        // Add text with black color
         ctx.font = 'bold 14px Segoe UI';
         ctx.fillStyle = '#000';
         ctx.textAlign = 'center';
 
-        const baseY = 320;
+        const baseY = 330;
         ctx.fillText(`Name: ${name}`, 150, baseY);
         ctx.fillText(`Amount: ₹${amount}`, 150, baseY + 20);
         ctx.fillText(`UPI ID: ${upiId}`, 150, baseY + 40);
-        ctx.fillText(`Remarks: ${note}`, 150, baseY + 60);  // 🟢 Note directly after UPI
+        ctx.fillText(`Remarks: ${note}`, 150, baseY + 60);
 
         canvas.style.display = 'block';
         document.getElementById('downloadBtn').style.display = 'inline-block';
